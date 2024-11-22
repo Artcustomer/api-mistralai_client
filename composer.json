@@ -1,5 +1,5 @@
 {
-    "name": "artcustomer/mistral-api-client",
+    "name": "artcustomer/mistralai-api-client",
     "description": "MistralAI Api client in PHP",
     "keywords": ["api"],
     "type": "library",
