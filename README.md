@@ -16,7 +16,7 @@ https://getcomposer.org/
     }
 ],
 "require": {
-  "artcustomer/mistralai-api-client": "^1.0.0",
+  "artcustomer/mistralai-api-client": "^0.0.1",
 }
 ```
 
@@ -31,7 +31,7 @@ $apiGateway->initialize();
 
 // Perform a request
 $params = [
-    'model' => 'gpt-4',
+    'model' => 'mistral-small',
     'messages' => [
         [
             'role' => 'user',

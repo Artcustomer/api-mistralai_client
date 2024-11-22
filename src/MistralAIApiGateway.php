@@ -4,6 +4,9 @@ namespace Artcustomer\MistralAIClient;
 
 use Artcustomer\ApiUnit\Gateway\AbstractApiGateway;
 use Artcustomer\ApiUnit\Http\IApiResponse;
+use Artcustomer\MistralAIClient\Client\ApiClient;
+use Artcustomer\MistralAIClient\Connector\ChatConnector;
+use Artcustomer\MistralAIClient\Connector\ModelConnector;
 use Artcustomer\MistralAIClient\Utils\ApiInfos;
 
 /**
@@ -11,6 +14,9 @@ use Artcustomer\MistralAIClient\Utils\ApiInfos;
  */
 class MistralAIApiGateway extends AbstractApiGateway
 {
+
+    private ChatConnector $chatConnector;
+    private ModelConnector $modelConnector;
 
     private string $apiKey;
     private bool $availability;
@@ -20,6 +26,7 @@ class MistralAIApiGateway extends AbstractApiGateway
      *
      * @param string $apiKey
      * @param bool $availability
+     * @throws \ReflectionException
      */
     public function __construct(string $apiKey, bool $availability)
     {
@@ -28,7 +35,7 @@ class MistralAIApiGateway extends AbstractApiGateway
 
         $this->defineParams();
 
-        parent::__construct();
+        parent::__construct(ApiClient::class, [$this->params]);
     }
 
     /**
@@ -50,7 +57,27 @@ class MistralAIApiGateway extends AbstractApiGateway
      */
     public function test(): IApiResponse
     {
+        return $this->modelConnector->list();
+    }
 
+    /**
+     * Get ChatConnector instance
+     *
+     * @return ChatConnector
+     */
+    public function getChatConnector(): ChatConnector
+    {
+        return $this->chatConnector;
+    }
+
+    /**
+     * Get ModelConnector instance
+     *
+     * @return ModelConnector
+     */
+    public function getModelConnector(): ModelConnector
+    {
+        return $this->modelConnector;
     }
 
     /**
@@ -60,7 +87,8 @@ class MistralAIApiGateway extends AbstractApiGateway
      */
     private function setupConnectors(): void
     {
-
+        $this->chatConnector = new ChatConnector($this->client);
+        $this->modelConnector = new ModelConnector($this->client);
     }
 
     /**
