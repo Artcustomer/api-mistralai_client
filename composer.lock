@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b4928a273d1c48900536dfd82679ac7d",
+    "content-hash": "fd52fc47e1fa8eeacffb2e66505e1167",
     "packages": [
         {
             "name": "artcustomer/apiunit",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Artcustomer/apiunit.git",
-                "reference": "3888c0bc56e22944ccda3370852e0a98925b6cca"
+                "reference": "1afa55e4b393674f447823b7fb6206dea36b1346"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Artcustomer/apiunit/zipball/3888c0bc56e22944ccda3370852e0a98925b6cca",
-                "reference": "3888c0bc56e22944ccda3370852e0a98925b6cca",
+                "url": "https://api.github.com/repos/Artcustomer/apiunit/zipball/1afa55e4b393674f447823b7fb6206dea36b1346",
+                "reference": "1afa55e4b393674f447823b7fb6206dea36b1346",
                 "shasum": ""
             },
             "require": {
@@ -48,10 +48,10 @@
                 "api"
             ],
             "support": {
-                "source": "https://github.com/Artcustomer/apiunit/tree/1.0.2",
+                "source": "https://github.com/Artcustomer/apiunit/tree/1.0.3",
                 "issues": "https://github.com/Artcustomer/apiunit/issues"
             },
-            "time": "2023-11-29T16:37:55+00:00"
+            "time": "2025-02-14T08:42:27+00:00"
         }
     ],
     "packages-dev": [],
