@@ -5,7 +5,14 @@ namespace Artcustomer\MistralAIClient;
 use Artcustomer\ApiUnit\Gateway\AbstractApiGateway;
 use Artcustomer\ApiUnit\Http\IApiResponse;
 use Artcustomer\MistralAIClient\Client\ApiClient;
+use Artcustomer\MistralAIClient\Connector\AgentConnector;
+use Artcustomer\MistralAIClient\Connector\BatchConnector;
 use Artcustomer\MistralAIClient\Connector\ChatConnector;
+use Artcustomer\MistralAIClient\Connector\ClassifierConnector;
+use Artcustomer\MistralAIClient\Connector\EmbeddingConnector;
+use Artcustomer\MistralAIClient\Connector\FileConnector;
+use Artcustomer\MistralAIClient\Connector\FimConnector;
+use Artcustomer\MistralAIClient\Connector\FineTuningConnector;
 use Artcustomer\MistralAIClient\Connector\ModelConnector;
 use Artcustomer\MistralAIClient\Utils\ApiInfos;
 
@@ -15,7 +22,14 @@ use Artcustomer\MistralAIClient\Utils\ApiInfos;
 class MistralAIApiGateway extends AbstractApiGateway
 {
 
+    private AgentConnector $agentConnector;
+    private BatchConnector $batchConnector;
     private ChatConnector $chatConnector;
+    private ClassifierConnector $classifierConnector;
+    private EmbeddingConnector $embeddingConnector;
+    private FileConnector $fileConnector;
+    private FimConnector $fimConnector;
+    private FineTuningConnector $fineTuningConnector;
     private ModelConnector $modelConnector;
 
     private string $apiKey;
@@ -61,6 +75,26 @@ class MistralAIApiGateway extends AbstractApiGateway
     }
 
     /**
+     * Get AgentConnector instance
+     *
+     * @return AgentConnector
+     */
+    public function getAgentConnector(): AgentConnector
+    {
+        return $this->agentConnector;
+    }
+
+    /**
+     * Get BatchConnector instance
+     *
+     * @return BatchConnector
+     */
+    public function getBatchConnector(): BatchConnector
+    {
+        return $this->batchConnector;
+    }
+
+    /**
      * Get ChatConnector instance
      *
      * @return ChatConnector
@@ -68,6 +102,56 @@ class MistralAIApiGateway extends AbstractApiGateway
     public function getChatConnector(): ChatConnector
     {
         return $this->chatConnector;
+    }
+
+    /**
+     * Get ClassifierConnector instance
+     *
+     * @return ClassifierConnector
+     */
+    public function getClassifierConnector(): ClassifierConnector
+    {
+        return $this->classifierConnector;
+    }
+
+    /**
+     * Get EmbeddingConnector instance
+     *
+     * @return EmbeddingConnector
+     */
+    public function getEmbeddingConnector(): EmbeddingConnector
+    {
+        return $this->embeddingConnector;
+    }
+
+    /**
+     * Get FileConnector instance
+     *
+     * @return FileConnector
+     */
+    public function getFileConnector(): FileConnector
+    {
+        return $this->fileConnector;
+    }
+
+    /**
+     * Get FimConnector instance
+     *
+     * @return FimConnector
+     */
+    public function getFimConnector(): FimConnector
+    {
+        return $this->fimConnector;
+    }
+
+    /**
+     * Get FineTuningConnector instance
+     *
+     * @return FineTuningConnector
+     */
+    public function getFineTuningConnector(): FineTuningConnector
+    {
+        return $this->fineTuningConnector;
     }
 
     /**
@@ -87,7 +171,14 @@ class MistralAIApiGateway extends AbstractApiGateway
      */
     private function setupConnectors(): void
     {
+        $this->agentConnector = new AgentConnector($this->client);
+        $this->batchConnector = new BatchConnector($this->client);
         $this->chatConnector = new ChatConnector($this->client);
+        $this->classifierConnector = new ClassifierConnector($this->client);
+        $this->embeddingConnector = new EmbeddingConnector($this->client);
+        $this->fileConnector = new FileConnector($this->client);
+        $this->fimConnector = new FimConnector($this->client);
+        $this->fineTuningConnector = new FineTuningConnector($this->client);
         $this->modelConnector = new ModelConnector($this->client);
     }
 
